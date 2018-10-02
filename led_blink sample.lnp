@@ -1,0 +1,3 @@
+"led.obj" 
+TO "led_blink sample" 
+RAMSIZE(256) 
