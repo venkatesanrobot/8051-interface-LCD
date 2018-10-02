@@ -1,0 +1,53 @@
+C51 COMPILER V9.53.0.0   LCD                                                               09/22/2018 00:40:59 PAGE 1   
+
+
+C51 COMPILER V9.53.0.0, COMPILATION OF MODULE LCD
+OBJECT MODULE PLACED IN lcd.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE lcd.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          // File Name: lcd interface on 8051
+   2          // Author: R.venkatesan
+   3          // lcd 16X2 8bit method 
+   4           // lcd pin connection port0 -data pin (D0-D7)
+   5           // control pin lcd conection  RS=P2^7, R/W=P2^6, E=P2^5
+   6           
+   7          
+   8          # include <reg51.h>
+   9          # include <stdio.h>
+  10          # include "lcd.h"  // lcd library 
+  11          /* if want change the lcd pin connection open lcd file library change the pin as per your aspect 
+  12           And also remain you change busy flag= bf(used name in lcdlibrary ) also for inlcd pin data  lcd file liba
+             -ry  */
+  13           void main()
+  14           {
+  15   1        port(); // pulldown the all pin in micro controller
+  16   1        lcd_initial(); // lcd basic initialization cammand line 
+  17   1         while(1)
+  18   1         {
+  19   2           lcd_com(0x01);  // lcd cammand dispaly frist line
+  20   2           lcd_string(" lcd 8bit method "); // write your own word in double quotes
+  21   2           
+  22   2           lcd_com (0xc0);  // lcd cammand dispaly second line
+  23   2           lcd_string("design by RV ");  // write your own word in double quotes
+  24   2           
+  25   2            delay(100); // delay for seen the lcd lines display
+  26   2         }
+  27   1           
+  28   1       }
+  29             
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    191    ----
+   CONSTANT SIZE    =     32    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
